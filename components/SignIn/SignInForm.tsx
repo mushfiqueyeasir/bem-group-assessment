@@ -1,9 +1,11 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { USER_CONTEXT } from "@/app/UserProvider";
 
 const SignInForm = () => {
+    const {refetch} = useContext(USER_CONTEXT)
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const formRef = useRef(null);
@@ -30,6 +32,7 @@ const SignInForm = () => {
             document.cookie = `user=${JSON.stringify(userData)};path=/`;
             setLoading(false);
             toast.success('Welcome')
+            refetch()
             router.replace("/");
         } catch (error) {
             toast.error(error.message)
@@ -38,7 +41,7 @@ const SignInForm = () => {
     };
 
     return (
-        <section className="mx-auto flex min-h-[80vh] max-w-[20%] items-center justify-end py-10">
+        <section className="flex mx-auto min-h-[80vh] xl:max-w-[40%]  2xl:max-w-[20%] px-4 items-center justify-center py-10">
             <div>
                 <h3 className="text-center font-sans text-xl font-medium text-secondary sm:leading-8 md:text-2xl">
                     Sign In
@@ -60,17 +63,7 @@ const SignInForm = () => {
                             name="password"
                             required
                         />
-                        <div className="my-6 flex items-center justify-between">
-                            <label className="cursor-pointer text-base">
-                                <input
-                                    className="h-4 w-4 cursor-pointer"
-                                    id="remember"
-                                    type="checkbox"
-                                    name="remember"
-                                />
-                                <span className="ml-2">Remember Me</span>
-                            </label>
-                        </div>
+                     
                         <button
                             type="submit"
                             className="mt-6 flex w-full cursor-pointer items-center justify-center gap-4 rounded-md bg-primary px-7 py-4 text-base font-medium leading-6 text-white  transition ease-in-out hover:bg-secondary hover:duration-700"

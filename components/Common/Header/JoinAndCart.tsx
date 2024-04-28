@@ -1,20 +1,23 @@
 "use client";
 import { removeCookie } from "@/utility/cookie";
 import Link from "next/link";
-import React from "react";
-import { useRouter } from 'next/navigation'
+import React, { useContext } from "react";
+import { useRouter } from "next/navigation";
 import { FaUser } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
 import { toast } from "react-toastify";
-const JoinAndCart = ({ user }) => {
+import { USER_CONTEXT } from "@/app/UserProvider";
+const JoinAndCart = () => {
+    const { user, refetch } = useContext(USER_CONTEXT);
     const router = useRouter();
-    const handleLogout = () => {
+    const handleLogout = async () => {
         removeCookie("user");
-        toast.info('Until next time!')
+        await refetch();
+        toast.info("Until next time!");
         router.replace("/sign-in");
     };
     return (
-        <div className="hidden gap-x-2  md:flex">
+        <div className="flex">
             <div>
                 {user ? (
                     <button

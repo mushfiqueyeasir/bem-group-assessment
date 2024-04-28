@@ -4,17 +4,16 @@ import { TbMenu2 } from "react-icons/tb";
 import JoinAndCart from "./JoinAndCart";
 import NavMenu from "./NavMenu";
 import SideBar from "./SideBar";
-import { cookies } from 'next/headers'
+import { useContext } from "react";
 
 const Header = () => {
-    const cookieStore = cookies()
-    const user = cookieStore.get('user')
+  
     return (
         <div className="drawer bg-white md:z-[999] lg:sticky lg:top-0">
             <input id="sideBar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
                 <header className="shadow">
-                    <section className="py-3">
+                    <section className="py-4">
                         <div className="container flex items-center justify-between">
                             <Link href="/" className="md:py-2">
                                 <img src="/images/logo/logo.png" alt="Logo" loading="lazy" className="w-12 md:w-16" />
@@ -23,8 +22,8 @@ const Header = () => {
                                 <NavMenu />
                             </div>
 
-                            <div className="flex gap-x-4">
-                                <JoinAndCart user={user}/>
+                            <div className="flex gap-x-4 items-center">
+                                <JoinAndCart />
                                 <label
                                     htmlFor="sideBar"
                                     className="flex items-center gap-4 rounded-md p-2 text-3xl hover:text-primary lg:hidden"
