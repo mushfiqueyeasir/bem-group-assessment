@@ -13,9 +13,7 @@ export const middleware = (request: NextRequest) => {
         if (!request.nextUrl.pathname.startsWith("/sign-in")) {
             return NextResponse.redirect(new URL("/sign-in", request.url));
         }
+        
     }
 };
 
-export const config = {
-    matcher: ['/', '/preview',"/sign-in"],
-  }
