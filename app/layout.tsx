@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Header />
                 <main className="min-h-[90vh]">{children}</main>
                 <ToastContainer
-                    position="bottom-center"
+                    position="top-right"
                     autoClose={5000}
                     hideProgressBar={false}
                     newestOnTop={false}

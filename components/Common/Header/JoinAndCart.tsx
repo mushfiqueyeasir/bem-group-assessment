@@ -5,10 +5,12 @@ import React from "react";
 import { useRouter } from 'next/navigation'
 import { FaUser } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
+import { toast } from "react-toastify";
 const JoinAndCart = ({ user }) => {
     const router = useRouter();
     const handleLogout = () => {
         removeCookie("user");
+        toast.info('Until next time!')
         router.replace("/sign-in");
     };
     return (
