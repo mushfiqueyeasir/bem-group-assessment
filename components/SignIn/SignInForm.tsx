@@ -1,12 +1,14 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useRouter } from 'next/navigation'
 
 const SignInForm = () => {
+    const [loading,setLoading]=useState(false)
     const router = useRouter();
     const formRef = useRef(null);
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true)
         const formData = new FormData(formRef.current);
         const username = formData.get("username");
         const password = formData.get("password");
@@ -25,9 +27,11 @@ const SignInForm = () => {
             }
             const userData = await response.json();
             document.cookie = `user=${JSON.stringify(userData)};path=/`;
+            setLoading(false)
             router.replace("/");
         } catch (error) {
             console.error("Sign in error:", error.message);
+            setLoading(false)
 
         }
     };
@@ -70,6 +74,7 @@ const SignInForm = () => {
                             type="submit"
                             className="mt-6 flex w-full cursor-pointer items-center justify-center gap-4 rounded-md bg-primary px-7 py-4 text-base font-medium leading-6 text-white  transition ease-in-out hover:bg-secondary hover:duration-700"
                         >
+                           {loading&& <span className="loading loading-spinner "></span>}
                             Sign In
                         </button>
                     </form>
