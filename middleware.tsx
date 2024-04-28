@@ -10,11 +10,14 @@ export const middleware = (request: NextRequest) => {
             return NextResponse.next();
         }
     } else {
-        return NextResponse.redirect(new URL("/sign-in", request.url));
+        if (!request.nextUrl.pathname.startsWith("/sign-in")) {
+            return NextResponse.redirect(new URL("/sign-in", request.url));
+        }
+       
     }
 
 };
 
 export const config = {
-    matcher: ['/', '/preview'],
+    matcher: ['/', '/preview',"/sign-in"],
   }
