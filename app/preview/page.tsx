@@ -1,15 +1,12 @@
 import { SeoContent } from "@/SeoContent/SeoContent";
-import Hero from "@/components/Hero";
 import { generateMetadata } from "@/utility/generateMetadata";
 
 export const metadata = generateMetadata(SeoContent.baseSeo);
 
- const HomePage=()=> {
+export default function SingInPage() {
     return (
-        <>
-         <Hero/>
-        </>
+        <section className="container text-center py-10">
+            <h1>This is Preview Page</h1>
+        </section>
     );
 }
-
-export default HomePage

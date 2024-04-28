@@ -17,7 +17,7 @@ const JoinAndCart = ({ user }) => {
                 {user ? (
                     <button
                         onClick={handleLogout}
-                        className="tooltip tooltip-left tooltip-primary block rounded-lg bg-secondary/10 p-3 text-xl text-primary"
+                        className="tooltip tooltip-left tooltip-primary block rounded-lg bg-secondary/10 p-2 text-2xl text-red-500"
                         data-tip="Log Out"
                     >
                         <IoLogOut />
@@ -25,7 +25,7 @@ const JoinAndCart = ({ user }) => {
                 ) : (
                     <Link
                         href="/sign-in"
-                        className="tooltip tooltip-left tooltip-primary block rounded-lg bg-secondary/10 p-3 text-xl text-primary"
+                        className="tooltip tooltip-left tooltip-primary block rounded-lg bg-secondary/10 p-2 text-2xl text-primary"
                         data-tip="Sing In"
                     >
                         <FaUser />

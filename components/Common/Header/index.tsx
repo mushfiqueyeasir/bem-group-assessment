@@ -14,7 +14,7 @@ const Header = () => {
             <input id="sideBar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
                 <header className="shadow">
-                    <section className="py-1">
+                    <section className="py-3">
                         <div className="container flex items-center justify-between">
                             <Link href="/" className="md:py-2">
                                 <img src="/images/logo/logo.png" alt="Logo" loading="lazy" className="w-12 md:w-16" />
