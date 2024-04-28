@@ -1,0 +1,8 @@
+.PhoneInput input {
+    height: 50px !important;
+    background-color: unset !important;
+    outline: none !important;
+}
+.PhoneInputInternationalIconPhone {
+    display: none !important;
+}

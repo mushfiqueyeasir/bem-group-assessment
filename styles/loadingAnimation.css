@@ -1,0 +1,29 @@
+.loading-xs {
+    animation: scaleUpDown-xs 2s ease-in-out infinite;
+}
+
+.loading-sm {
+    animation: scaleUpDown-xs 2s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.loading-md {
+    animation: scaleUpDown-xs 2s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+.loading-lg {
+    animation: scaleUpDown-xs 2s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+@keyframes scaleUpDown-xs {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
