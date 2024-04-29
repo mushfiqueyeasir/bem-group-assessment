@@ -22,23 +22,28 @@ const Preview = ({ body }) => {
     };
 
     return (
-        <div className="relative py-6" onWheel={handleZoom}>
+        <div className="relative py-6">
             {body && (
                 <>
-                    {" "}
-                    <div className=" overflow-x-auto overflow-y-auto" style={{ transform: `scale(${zoomLevel})` }}>
-                        <PreviewComponent htmlString={body.code} />
-                    </div>
-                    <div className="absolute right-4 top-4 flex flex-col gap-y-4">
-                        <button onClick={zoomIn} className="rounded-full bg-gray-400 p-3">
-                            <FaPlus />
-                        </button>
-                        <button onClick={zoomOut} className="rounded-full bg-gray-400 p-3">
-                            <FaMinus />
-                        </button>
+                    <div className="mx-auto w-fit overflow-x-auto overflow-y-auto  border">
+                        <div
+                            className="overflow-x-auto overflow-y-auto"
+                            onWheel={handleZoom}
+                            style={{ transform: `scale(${zoomLevel})` }}
+                        >
+                            <PreviewComponent htmlString={body.code} />
+                        </div>
                     </div>
                 </>
             )}
+            <div className="container fixed top-0  flex  h-[90vh] flex-col items-end justify-center gap-y-4 ">
+                <button onClick={zoomIn} className="rounded-full bg-gray-400 p-3 mr-4">
+                    <FaPlus />
+                </button>
+                <button onClick={zoomOut} className="rounded-full bg-gray-400 p-3 mr-4">
+                    <FaMinus />
+                </button>
+            </div>
         </div>
     );
 };
