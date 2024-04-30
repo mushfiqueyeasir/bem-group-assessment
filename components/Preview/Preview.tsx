@@ -16,19 +16,20 @@ const Preview = ({ body }) => {
     };
 
     const handleZoom = (e) => {
+        console.log(e)
         const zoomFactor = e.deltaY > 0 ? -0.1 : 0.1;
         const newZoomLevel = Math.max(0.1, Math.min(zoomLevel + zoomFactor, 3));
         setZoomLevel(newZoomLevel);
     };
 
     return (
-        <div className="relative py-6">
+        <div className="relative py-6" onWheel={handleZoom}>
             {body && (
                 <>
                     <div className="mx-auto w-fit overflow-x-auto overflow-y-auto  border">
                         <div
                             className="overflow-x-auto overflow-y-auto"
-                            onWheel={handleZoom}
+                          
                             style={{ transform: `scale(${zoomLevel})` }}
                         >
                             <PreviewComponent htmlString={body.code} />
